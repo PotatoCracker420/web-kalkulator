@@ -1,0 +1,95 @@
+/* Generell stil */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Container for kalkulatoren */
+#fakultet {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    max-width: 100%;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+/* Input-felt og knapper */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Resultatseksjon */
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Spesifikke stilinnstillinger for hver seksjon */
+#fakultet form {
+    margin-bottom: 20px;
+}
+
+.fizzBuzzResultat,
+.fibonacciResultat {
+    color: #4CAF50;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Media Queries for responsiv design */
+@media (max-width: 600px) {
+    #fakultet {
+        padding: 15px;
+        width: 90%;
+    }
+
+    input[type="number"],
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
