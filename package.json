@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test"
-},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PotatoCracker420/web-kalkulator.git"
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/PotatoCracker420/web-kalkulator/issues"
   },
-  "homepage": "https://github.com/PotatoCracker420/web-kalkulator#readme"
+  "homepage": "https://github.com/PotatoCracker420/web-kalkulator#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }

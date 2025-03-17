@@ -1,33 +1,73 @@
 <div id="fakultet">
     <form>
-        <input name="tall" placeholder="Tall" type="number">
+        <label for="fakultetInput">Tall for Fakultet:</label>
+        <input name="tall" id="fakultetInput" placeholder="Tall" type="number">
         <button>Regn ut fakultet</button>
     </form>
     <p>
-        Resultatet er: <span class="resultat"></span>
+        Fakultet resultatet er: <span class="resultat"></span>
+    </p>
+
+    <!-- FizzBuzz-seksjon -->
+    <form>
+        <label for="fizzBuzzInput">Tall for FizzBuzz:</label>
+        <input name="fizzBuzzTall" id="fizzBuzzInput" placeholder="Tall" type="number">
+        <button id="fizzBuzzBtn">Beregn FizzBuzz</button>
+    </form>
+    <p>
+        FizzBuzz resultatet er: <span class="fizzBuzzResultat"></span>
     </p>
 </div>
-<script type="module">import {fakultet} from './fakultet.js'
 
+<script type="module">
+    import { fakultet } from './fakultet.js'
+
+    // FizzBuzz funksjon
+    function fizzBuzz(number) {
+        if (number % 3 === 0 && number % 5 === 0) {
+            return "FizzBuzz";
+        } else if (number % 3 === 0) {
+            return "Fizz";
+        } else if (number % 5 === 0) {
+            return "Buzz";
+        } else {
+            return number.toString();
+        }
+    }
+
+    // Fakultet beregning
     function regnUt(evt) {
         // For å forhindre at nettleseren sender skjemaet:
         evt.preventDefault()
-    
+
         // Vi bruker querySelector for å finne elementene vi trenger:
-        // "#fakultet input" betyr "input-felt i elementet med id 'fakultet'
-        // "#fakultet .resultat" betyr "element med class 'resultat' i
-        //    elementet med id 'fakultet'
-        const input = document.querySelector('#fakultet input')
+        const input = document.querySelector('#fakultet input[name="tall"]')
         const output = document.querySelector('#fakultet .resultat')
-    
+
         // parseInt konverterer en streng til et heltall
         const tall = parseInt(input.value)
-    
+
         output.textContent = fakultet(tall)
     }
-    
-    // Vi legger til en "event listener" som kjører regnUt-funksjonen når
-    // vi trykker på en knapp (button) i elementet med id 'fakultet'
+
+    // FizzBuzz beregning
+    function regnUtFizzBuzz(evt) {
+        // For å forhindre at nettleseren sender skjemaet:
+        evt.preventDefault()
+
+        const input = document.querySelector('#fakultet input[name="fizzBuzzTall"]')
+        const output = document.querySelector('#fakultet .fizzBuzzResultat')
+
+        const tall = parseInt(input.value)
+
+        output.textContent = fizzBuzz(tall)
+    }
+
+    // Event listener for fakultet
     document.querySelector('#fakultet button')
         .addEventListener('click', e => regnUt(e))
-        </script>
+
+    // Event listener for FizzBuzz
+    document.querySelector('#fizzBuzzBtn')
+        .addEventListener('click', e => regnUtFizzBuzz(e))
+</script>
