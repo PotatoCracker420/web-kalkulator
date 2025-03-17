@@ -18,4 +18,5 @@ test('fibonacci(5) should return 5', () => {
 });
 
 test('fibonacci(10) should return 55', () => {
-    expect(fibonacci
+    expect(fibonacci(10)).toBe(55);
+});
