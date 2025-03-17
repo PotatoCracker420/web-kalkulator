@@ -1,4 +1,5 @@
 <div id="fakultet">
+    <!-- Fakultet-seksjon -->
     <form>
         <label for="fakultetInput">Tall for Fakultet:</label>
         <input name="tall" id="fakultetInput" placeholder="Tall" type="number">
@@ -17,10 +18,21 @@
     <p>
         FizzBuzz resultatet er: <span class="fizzBuzzResultat"></span>
     </p>
+
+    <!-- Fibonacci-seksjon -->
+    <form>
+        <label for="fibonacciInput">Tall for Fibonacci:</label>
+        <input name="fibonacciTall" id="fibonacciInput" placeholder="Tall" type="number">
+        <button id="fibonacciBtn">Beregn Fibonacci</button>
+    </form>
+    <p>
+        Fibonacci resultatet er: <span class="fibonacciResultat"></span>
+    </p>
 </div>
 
 <script type="module">
-    import { fakultet } from './fakultet.js'
+    // Fakultet funksjon importeres (antatt eksisterende)
+    import { fakultet } from './fakultet.js';
 
     // FizzBuzz funksjon
     function fizzBuzz(number) {
@@ -35,39 +47,54 @@
         }
     }
 
+    // Fibonacci funksjon
+    function fibonacci(n) {
+        if (n <= 2) {
+            return 1;  // Fibonacci(1) = 1, Fibonacci(2) = 1
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);  // Rekursiv beregning
+    }
+
     // Fakultet beregning
     function regnUt(evt) {
-        // For å forhindre at nettleseren sender skjemaet:
-        evt.preventDefault()
+        evt.preventDefault(); // Forhindrer at skjemaet sendes
 
-        // Vi bruker querySelector for å finne elementene vi trenger:
-        const input = document.querySelector('#fakultet input[name="tall"]')
-        const output = document.querySelector('#fakultet .resultat')
+        const input = document.querySelector('#fakultet input[name="tall"]');
+        const output = document.querySelector('#fakultet .resultat');
 
-        // parseInt konverterer en streng til et heltall
-        const tall = parseInt(input.value)
-
-        output.textContent = fakultet(tall)
+        const tall = parseInt(input.value);
+        output.textContent = fakultet(tall);
     }
 
     // FizzBuzz beregning
     function regnUtFizzBuzz(evt) {
-        // For å forhindre at nettleseren sender skjemaet:
-        evt.preventDefault()
+        evt.preventDefault(); // Forhindrer at skjemaet sendes
 
-        const input = document.querySelector('#fakultet input[name="fizzBuzzTall"]')
-        const output = document.querySelector('#fakultet .fizzBuzzResultat')
+        const input = document.querySelector('#fakultet input[name="fizzBuzzTall"]');
+        const output = document.querySelector('#fakultet .fizzBuzzResultat');
 
-        const tall = parseInt(input.value)
-
-        output.textContent = fizzBuzz(tall)
+        const tall = parseInt(input.value);
+        output.textContent = fizzBuzz(tall);
     }
 
-    // Event listener for fakultet
-    document.querySelector('#fakultet button')
-        .addEventListener('click', e => regnUt(e))
+    // Fibonacci beregning
+    function regnUtFibonacci(evt) {
+        evt.preventDefault(); // Forhindrer at skjemaet sendes
 
-    // Event listener for FizzBuzz
+        const input = document.querySelector('#fibonacciInput');
+        const output = document.querySelector('.fibonacciResultat');
+
+        const tall = parseInt(input.value);
+        output.textContent = fibonacci(tall); // Beregn Fibonacci
+    }
+
+    // Event listeners
+    document.querySelector('#fakultet button')
+        .addEventListener('click', e => regnUt(e));  // Fakultet
+
     document.querySelector('#fizzBuzzBtn')
-        .addEventListener('click', e => regnUtFizzBuzz(e))
+        .addEventListener('click', e => regnUtFizzBuzz(e));  // FizzBuzz
+
+    document.querySelector('#fibonacciBtn')
+        .addEventListener('click', e => regnUtFibonacci(e));  // Fibonacci
 </script>
