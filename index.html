@@ -80,14 +80,19 @@
 
     // Fibonacci beregning
     function regnUtFibonacci(evt) {
-        evt.preventDefault(); // Forhindrer at skjemaet sendes
+    evt.preventDefault(); // Forhindrer at skjemaet sendes
 
-        const input = document.querySelector('#fibonacciInput');
-        const output = document.querySelector('.fibonacciResultat');
+    const input = document.querySelector('#fibonacciInput');
+    const output = document.querySelector('.fibonacciResultat');
 
-        const tall = parseInt(input.value);
-        output.textContent = fibonacci(tall); // Beregn Fibonacci
+    const tall = parseInt(input.value);
+    
+    if (tall > 5) {
+        output.textContent = "Maks verdi er 5";
+    } else {
+        output.textContent = fibonacci(tall);
     }
+}
 
     // Event listeners
     document.querySelector('#fakultet button')
@@ -97,5 +102,5 @@
         .addEventListener('click', e => regnUtFizzBuzz(e));  // FizzBuzz
 
     document.querySelector('#fibonacciBtn')
-        .addEventListener('click', e => regnUtFibonacci(e));  // Fibonacci
+        .addEventListener('click', e => regnUtFibonacci(e));
 </script>
